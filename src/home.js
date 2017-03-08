@@ -4,31 +4,48 @@ import { browserHistory } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router';
+// import IconButton from 'material-ui/IconButton';
+// import NavigationClose from 'material-ui/svg-icons/navigation/close';
+// import RaisedButton from 'material-ui/RaisedButton';
+import { Link } from 'react-router';
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.logout=this.logout.bind(this);
-        this.demo=this.demo.bind(this);
-        this.state={
-            array:[]
+        this.logout = this.logout.bind(this);
+        
+        this.state = {
+            array: []
         }
 
     }
-    demo(){
-        console.log('asdsad');
-    }
+    // demo() {
+    //     console.log('asdsad');
+    // }
+
     componentWillMount() {
-        firebase.database().ref('users/').on('child_added', (data) => {
+
+        var userId = firebase.auth().currentUser.uid;
+        console.log(userId)
+        // return firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
+        //     var userdetail = snapshot.val().username;
+        //     console.log(userdetail)
+        //     let dbarray=[];
+        //     dbarray.push(userdetail)
+        //     console.log(dbarray)
+        //     console.log(this.state.array)
+        //     this.setState({
+        //         array: dbarray
+
+        //     })
+
+        // })
+        firebase.database().ref('users/'+userId).on('child_added', (data) => {
             let obj = data.val();
             console.log("firebasedata", obj);
-            let dbarray = [];
+           let dbarray = [];
             dbarray.push(obj)
             console.log(dbarray)
             console.log(this.state.array)
@@ -45,6 +62,7 @@ class Home extends React.Component {
         ev.preventDefault();
         firebase.auth().signOut().then(function () {
             console.log('Sign-out successful.')
+
             browserHistory.push('/app')
         }, function (error) {
             // An error happened.
@@ -55,33 +73,37 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                 <MuiThemeProvider>
+                <MuiThemeProvider>
                     <AppBar title="Blood Bank"
-                       
-                    // iconClassNameRight="muidocs-icon-navigation-expand-more"
+
+                        // iconClassNameRight="muidocs-icon-navigation-expand-more"
                         iconElementRight={<FlatButton onClick={this.logout} label="Logout" />}
                     />
 
-                 </MuiThemeProvider>
-                 
-                <select>
+                </MuiThemeProvider>
+                <div>
                     {this.state.array.map((val, i) => {
-                        return ( <option key={i} >{val.username}</option>)
-                    })}
-                   
-                    <option ref="o">O</option>
+                    return(<li key={i} >{val}</li>)
+                })}
+                </div>
+                <select>
+                    {/*{this.state.array.map((val, i) => {
+                        return (<option key={i} >{val.username}</option>)
+                    })}*/}
+
+                    {/*<option ref="o">O</option>
 
                     <option ref="a">A+</option>
                     <option ref="b">B+</option>
                     <option ref="an">A-</option>
-                    <option ref="ap">A+</option>
+                    <option ref="ap">A+</option>*/}
                 </select><br />
                 {/*<div>
                     {this.state.array.map((val, i) => {
                         return (<div key={i}><li >{val.username}</li></div>)
                     })}
                 </div>*/}
-                <Link to ="/donate"><button>Donate Blood</button></Link>
+                <Link to="/donate"><button>Donate Blood</button></Link>
             </div>
         )
     }

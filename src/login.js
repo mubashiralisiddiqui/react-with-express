@@ -24,15 +24,7 @@ class Login extends React.Component {
     alert(errorMessage);
   }
   console.log(error);
-})
-//     .catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-
-//   // ...
-// })
-     .then((user) => {
+}).then((user)=>{
       //  let userDetails={
       //      name: user.email,
            
@@ -64,7 +56,7 @@ class Login extends React.Component {
         
             <TextField hintText="Email" ref="email" /> <br />
             <br />
-            <TextField type= "password" hintText="Password" ref="Password" /> <br />
+            <TextField type="password" hintText="Password" ref="Password" /> <br />
             <br />
 
                <RaisedButton  type="submit" label="Login" primary={true} />

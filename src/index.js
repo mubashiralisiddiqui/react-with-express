@@ -6,13 +6,14 @@ import './index.css';
 import Login from './login';
 import Donate from './donate'
 import Home from './home'
-import { Router, Route, browserHistory} from 'react-router'
+import { Router, Route, browserHistory} from 'react-router';
+// import injectTapEventPlugin from "react-tap-event-plugin";
 
 
 
 ReactDOM.render(
   <Router history={browserHistory}>
-        <Route path="/" component={App}>
+        <Route path="/" component={ App}>
             {/*<IndexRoute component={App} />*/}
            
             <Route path="/signup" component={Signup}/>

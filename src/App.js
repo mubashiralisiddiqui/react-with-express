@@ -33,7 +33,7 @@ class App extends React.Component {
         < MuiThemeProvider>
         <div>
           <AppBar
-            title="BlooBank"iconClassNameRight="muidocs-icon-navigation-expand-more"
+            title="BloodBank"iconClassNameRight="muidocs-icon-navigation-expand-more"
           />
           {/*<h1>Blood Blank </h1>*/}
         
