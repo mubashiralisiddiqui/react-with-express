@@ -21,10 +21,17 @@ class Home extends React.Component {
         }
 
     }
+<<<<<<< HEAD:src/home.js
     // demo() {
     //     console.log('asdsad');
     // }
 
+=======
+    demo(){
+        console.log('asdsad');
+    }
+    
+>>>>>>> 3716b47f7a6e2e92ad95be6258613c9cd6b4bad0:src/components/home.js
     componentWillMount() {
 
         var userId = firebase.auth().currentUser.uid;
@@ -46,6 +53,7 @@ class Home extends React.Component {
             let obj = data.val();
             console.log("firebasedata", obj);
            let dbarray = [];
+<<<<<<< HEAD:src/home.js
              
             //   for (var prop in obj) {
             //     dbarray.push(obj[prop]);
@@ -56,6 +64,8 @@ class Home extends React.Component {
             //     console.log(this.state.complaints);
             // }
               
+=======
+>>>>>>> 3716b47f7a6e2e92ad95be6258613c9cd6b4bad0:src/components/home.js
             dbarray.push(obj)
             console.log(dbarray)
             console.log(this.state.array)
@@ -93,6 +103,7 @@ class Home extends React.Component {
                 </MuiThemeProvider>
                 <div>
                     {this.state.array.map((val, i) => {
+<<<<<<< HEAD:src/home.js
                     return(<li key={i} >{val}</li>)
                 })}
                 </div>
@@ -101,6 +112,11 @@ class Home extends React.Component {
                         return (<option key={i} >{val.username}</option>)
                     })}*/}
 
+=======
+                        return ( <option key={i} >{val.username}</option>)
+                    })}
+                   
+>>>>>>> 3716b47f7a6e2e92ad95be6258613c9cd6b4bad0:src/components/home.js
                     {/*<option ref="o">O</option>
 
                     <option ref="a">A+</option>

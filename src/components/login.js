@@ -1,6 +1,6 @@
 import React from 'react';
 //import logo from './logo.svg';
-import './App.css';
+import '../App.css';
 // import Home from './home';
 import {browserHistory,} from 'react-router';
 import * as firebase from 'firebase';
@@ -24,12 +24,20 @@ class Login extends React.Component {
     alert(errorMessage);
   }
   console.log(error);
+<<<<<<< HEAD:src/login.js
 }).then((user)=>{
       //  let userDetails={
       //      name: user.email,
+=======
+})
+
+     .then((user) => {
+       let userDetails={
+           name: user.email,
+>>>>>>> 3716b47f7a6e2e92ad95be6258613c9cd6b4bad0:src/components/login.js
            
            
-      //    }
+         }
           console.log(user)
           console.log(user.uid)
           // var auth = true;
