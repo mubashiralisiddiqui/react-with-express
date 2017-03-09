@@ -28,9 +28,9 @@ class Home extends React.Component {
     componentWillMount() {
 
         var userId = firebase.auth().currentUser.uid;
-        console.log(userId)
-        // return firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
-        //     var userdetail = snapshot.val().username;
+        // console.log(userId)
+        // return firebase.database().ref('users/' + userId).once('value').then(function (snapshot) {
+        //     var userdetail = snapshot.val();
         //     console.log(userdetail)
         //     let dbarray=[];
         //     dbarray.push(userdetail)
@@ -42,10 +42,20 @@ class Home extends React.Component {
         //     })
 
         // })
-        firebase.database().ref('users/'+userId).on('child_added', (data) => {
+        firebase.database().ref('users/'+userId).once('child_added', (data) => {
             let obj = data.val();
             console.log("firebasedata", obj);
            let dbarray = [];
+             
+            //   for (var prop in obj) {
+            //     dbarray.push(obj[prop]);
+            //     //   console.log(reports);
+            //     this.setState({
+            //         array: dbarray
+            //     })
+            //     console.log(this.state.complaints);
+            // }
+              
             dbarray.push(obj)
             console.log(dbarray)
             console.log(this.state.array)
